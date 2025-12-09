@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Subbik</string>
+    <string name="subbik">Subbik</string>
+    <string name="registration">Registration</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="EU">Email/Username</string>
+    <string name="Reg">Зарегестрироваться</string>
+    <string name="Aut">Войти</string>
+    <string name="Crt">Create account</string>
+
+</resources>
