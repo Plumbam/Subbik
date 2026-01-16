@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EAEAEA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create note"
+            android:textSize="24sp"
+            android:textColor="#556B2F"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp" />
+
+        <!-- ✅ Превью выбранной иконки -->
+        <ImageView
+            android:id="@+id/previewImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#B2C9A0"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="12dp" />
+
+        <!-- ✅ Выбор иконки -->
+        <Spinner
+            android:id="@+id/iconSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#B2C9A0"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:gravity="center" />
+
+        <!-- Поле Cost -->
+        <EditText
+            android:id="@+id/etCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Cost"
+            android:inputType="numberDecimal"
+            android:background="#B2C9A0"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center" />
+
+        <!-- Поле Name -->
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:background="#B2C9A0"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:gravity="center" />
+
+        <!-- Поле Day -->
+        <EditText
+            android:id="@+id/etDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Day (yyyy-MM-dd)"
+            android:background="#B2C9A0"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:gravity="center" />
+
+        <!-- Кнопки Cancel и Create -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancel"
+                android:background="#556B2F"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnCreate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Create"
+                android:background="#556B2F"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/jomhuria"
-        android:text="@string/Crt"
+        android:text="@string/CR"
         android:textColor="#3A5A40"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"

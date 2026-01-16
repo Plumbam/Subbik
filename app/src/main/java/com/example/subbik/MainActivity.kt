@@ -8,55 +8,57 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-
-
 class MainActivity : AppCompatActivity() {
+    private lateinit var userLogin: EditText
+    private lateinit var userPass: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_auth)
 
-        val userLogin: EditText = findViewById(R.id.user_login)
-        val userEmail: EditText = findViewById(R.id.user_email)
-        val userPass: EditText = findViewById(R.id.user_pass)
-        val userRpass: EditText = findViewById(R.id.user_rpass)
-        val button: Button = findViewById(R.id.button_reg)
-        val linkToAuth: TextView = findViewById(R.id.link_to_auth)
+        initViews()
+        setupClickListeners()
+    }
 
-        linkToAuth.setOnClickListener {
+    private fun initViews() {
+        userLogin = findViewById(R.id.user_login_auth)
+        userPass = findViewById(R.id.user_pass_auth)
+    }
+
+    private fun setupClickListeners() {
+        // Переход на регистрацию
+        val linkToReg: TextView = findViewById(R.id.link_to_reg)
+        linkToReg.setOnClickListener {
             val intent = Intent(this, AuthActivity::class.java)
-            startActivity((intent))
+            startActivity(intent)
         }
 
-        button.setOnClickListener{
+        // Авторизация → ItemsActivity с LOGIN_KEY
+        val button: Button = findViewById(R.id.button_auth)
+        button.setOnClickListener {
             val login = userLogin.text.toString().trim()
-            val email = userEmail.text.toString().trim()
             val pass = userPass.text.toString().trim()
-            val rpass = userRpass.text.toString().trim()
 
-
-            if(login == "" || email == "" || pass == "")
+            if (login == "" || pass == "") {
                 Toast.makeText(this, "Не все поля заполнены", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
 
-            else {
-                if (pass != rpass){
-                    Toast.makeText(this, "Пароли не совпадают", Toast.LENGTH_LONG).show()
-                    userPass.text.clear()
-                    userRpass.text.clear()
-                }
-                else {
+            val db = DbHelper(this, null)
+            val isAuth = db.getUser(login, pass)
 
-                    val user = User(login, email, pass)
+            if (isAuth) {
+                Toast.makeText(this, "Пользователь $login авторизован", Toast.LENGTH_LONG).show()
 
-                    val db = DbHelper(this, null)
-                    db.addUser(user)
-                    Toast.makeText(this, "Пользователь $login добавлен", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, ItemsActivity::class.java)
+                intent.putExtra("LOGIN_KEY", login)
 
-                    userLogin.text.clear()
-                    userEmail.text.clear()
-                    userPass.text.clear()
-                    userRpass.text.clear()
-                }
+                userLogin.text.clear()
+                userPass.text.clear()
 
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Пользователь $login НЕ авторизован", Toast.LENGTH_LONG).show()
             }
         }
     }

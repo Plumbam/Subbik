@@ -9,6 +9,7 @@
     <string name="EU">Email/Username</string>
     <string name="Reg">Зарегестрироваться</string>
     <string name="Aut">Войти</string>
-    <string name="Crt">Create account</string>
+    <string name="CR">Create account</string>
+    <string name="S">Subscriptions</string>
 
 </resources>
